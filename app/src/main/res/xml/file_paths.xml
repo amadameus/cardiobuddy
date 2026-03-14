@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- External app-specific storage: /sdcard/Android/data/com.nolan.cardiobuddy/files/ -->
+    <external-files-path name="hr_sessions" path="."/>
+    <!-- Internal app files fallback -->
+    <files-path name="hr_sessions_internal" path="."/>
+</paths>

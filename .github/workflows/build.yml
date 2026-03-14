@@ -1,0 +1,46 @@
+name: Build APK
+
+# Triggers: every push to main, or manual trigger from the Actions tab
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Java 17 (required by AGP 8.x)
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # 3. Install Gradle 8.4 (no wrapper binary needed)
+      - name: Install Gradle 8.4
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.4-bin.zip -O /tmp/gradle.zip
+          unzip -q /tmp/gradle.zip -d /tmp/
+          echo "/tmp/gradle-8.4/bin" >> $GITHUB_PATH
+
+      # 4. Point Gradle at the pre-installed Android SDK on the runner
+      - name: Configure Android SDK path
+        run: echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
+
+      # 5. Build the debug APK
+      - name: Build debug APK
+        run: gradle assembleDebug
+
+      # 6. Upload APK as a downloadable artifact (kept for 7 days)
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: hr-monitor-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 7

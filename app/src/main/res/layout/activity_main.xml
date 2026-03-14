@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0f1117"
+    android:padding="20dp">
+
+    <!-- App label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HR MONITOR"
+        android:textColor="#7a7d92"
+        android:textSize="12sp"
+        android:letterSpacing="0.18"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Device card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_bg"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DEVICE"
+                android:textColor="#7a7d92"
+                android:textSize="10sp"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/deviceNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No device selected"
+                android:textColor="#e8eaf0"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/changeDeviceBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Scan"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="#ff5252"
+            android:textSize="13sp"/>
+    </LinearLayout>
+
+    <!-- Max HR card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_bg"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MAX HEART RATE"
+                android:textColor="#7a7d92"
+                android:textSize="10sp"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/maxHrValueText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not set — tap Edit"
+                android:textColor="#e8eaf0"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/editMaxHrBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Edit"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="#ff5252"
+            android:textSize="13sp"/>
+    </LinearLayout>
+
+    <!-- Flexible spacer pushes buttons toward center/bottom -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Live HR (only visible during recording) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="4dp">
+
+        <TextView
+            android:id="@+id/liveHrText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textColor="#ff5252"
+            android:textSize="80sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/bpmLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" BPM"
+            android:textColor="#7a7d92"
+            android:textSize="20sp"
+            android:paddingBottom="14dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <!-- Status text -->
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ready"
+        android:textColor="#7a7d92"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- RECORD button -->
+    <Button
+        android:id="@+id/recordButton"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="RECORD"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.08"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- END SESSION button (hidden until recording) -->
+    <Button
+        android:id="@+id/endButton"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="END SESSION"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:backgroundTint="#b71c1c"
+        android:layout_marginBottom="12dp"
+        android:visibility="gone"/>
+
+</LinearLayout>
